@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBTODOLISTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="comment_id" />
+    </Key>
+    <Property Name="comment_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="task_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="task" Relationship="Self.FK__comment__task_id__45F365D3" FromRole="comment" ToRole="task" />
+    <NavigationProperty Name="user" Relationship="Self.FK__comment__user_id__44FF419A" FromRole="comment" ToRole="users" />
+  </EntityType>
+  <EntityType Name="history">
+    <Key>
+      <PropertyRef Name="his_id" />
+    </Key>
+    <Property Name="his_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="action" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="users" Relationship="Self.FK__users__role_id__3F466844" FromRole="roles" ToRole="users" />
+  </EntityType>
+  <EntityType Name="task">
+    <Key>
+      <PropertyRef Name="task_id" />
+    </Key>
+    <Property Name="task_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fromdate" Type="DateTime" Precision="3" />
+    <Property Name="todate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="scope" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name_sp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="comments" Relationship="Self.FK__comment__task_id__45F365D3" FromRole="task" ToRole="comment" />
+    <NavigationProperty Name="user" Relationship="Self.FK__task__user_id__4222D4EF" FromRole="task" ToRole="users" />
+    <NavigationProperty Name="joinnings" Relationship="DBTODOLISTModel.FK__joinning__task_i__5DCAEF64" FromRole="task" ToRole="joinning" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="role_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="comments" Relationship="Self.FK__comment__user_id__44FF419A" FromRole="users" ToRole="comment" />
+    <NavigationProperty Name="role" Relationship="Self.FK__users__role_id__3F466844" FromRole="users" ToRole="roles" />
+    <NavigationProperty Name="tasks" Relationship="Self.FK__task__user_id__4222D4EF" FromRole="users" ToRole="task" />
+    <NavigationProperty Name="joinnings" Relationship="DBTODOLISTModel.FK__joinning__user_i__5CD6CB2B" FromRole="user" ToRole="joinning" />
+  </EntityType>
+  <Association Name="FK__comment__task_id__45F365D3">
+    <End Role="task" Type="Self.task" Multiplicity="0..1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="task">
+        <PropertyRef Name="task_id" />
+      </Principal>
+      <Dependent Role="comment">
+        <PropertyRef Name="task_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comment__user_id__44FF419A">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="comment">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__role_id__3F466844">
+    <End Role="roles" Type="Self.role" Multiplicity="0..1" />
+    <End Role="users" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__task__user_id__4222D4EF">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="task" Type="Self.task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="task">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBTODOLISTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="comments" EntityType="Self.comment" />
+    <EntitySet Name="histories" EntityType="Self.history" />
+    <EntitySet Name="roles" EntityType="Self.role" />
+    <EntitySet Name="tasks" EntityType="Self.task" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK__comment__task_id__45F365D3" Association="Self.FK__comment__task_id__45F365D3">
+      <End Role="task" EntitySet="tasks" />
+      <End Role="comment" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comment__user_id__44FF419A" Association="Self.FK__comment__user_id__44FF419A">
+      <End Role="users" EntitySet="users" />
+      <End Role="comment" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__role_id__3F466844" Association="Self.FK__users__role_id__3F466844">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__task__user_id__4222D4EF" Association="Self.FK__task__user_id__4222D4EF">
+      <End Role="users" EntitySet="users" />
+      <End Role="task" EntitySet="tasks" />
+    </AssociationSet>
+    <EntitySet Name="joinnings" EntityType="DBTODOLISTModel.joinning" />
+    <AssociationSet Name="FK__joinning__task_i__5DCAEF64" Association="DBTODOLISTModel.FK__joinning__task_i__5DCAEF64">
+      <End Role="task" EntitySet="tasks" />
+      <End Role="joinning" EntitySet="joinnings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__joinning__user_i__5CD6CB2B" Association="DBTODOLISTModel.FK__joinning__user_i__5CD6CB2B">
+      <End Role="user" EntitySet="users" />
+      <End Role="joinning" EntitySet="joinnings" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="joinning">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="task_id" />
+    </Key>
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="task_id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" />
+    <NavigationProperty Name="task" Relationship="DBTODOLISTModel.FK__joinning__task_i__5DCAEF64" FromRole="joinning" ToRole="task" />
+    <NavigationProperty Name="user" Relationship="DBTODOLISTModel.FK__joinning__user_i__5CD6CB2B" FromRole="joinning" ToRole="user" />
+  </EntityType>
+  <Association Name="FK__joinning__task_i__5DCAEF64">
+    <End Type="DBTODOLISTModel.task" Role="task" Multiplicity="1" />
+    <End Type="DBTODOLISTModel.joinning" Role="joinning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="task">
+        <PropertyRef Name="task_id" />
+      </Principal>
+      <Dependent Role="joinning">
+        <PropertyRef Name="task_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__joinning__user_i__5CD6CB2B">
+    <End Type="DBTODOLISTModel.user" Role="user" Multiplicity="1" />
+    <End Type="DBTODOLISTModel.joinning" Role="joinning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="joinning">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

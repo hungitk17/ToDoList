@@ -1,0 +1,16 @@
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\ToDoList.exe.config
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\ToDoList.exe
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\ToDoList.pdb
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csprojAssemblyReference.cache
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Login.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Properties.Resources.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.GenerateResource.cache
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.CoreCompileInputs.cache
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.exe
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.pdb
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\EntityFramework.dll
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\EntityFramework.SqlServer.dll
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\EntityFramework.xml
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\EntityFramework.SqlServer.xml
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.CopyComplete
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Role_Users.resources
