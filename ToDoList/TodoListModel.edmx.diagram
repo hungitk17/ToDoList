@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d03caf0e419243f4b2a2421e44dd5f7b" Name="Diagram1">
         <EntityTypeShape EntityType="DBTODOLISTModel.comment" Width="1.5" PointX="1.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTODOLISTModel.history" Width="1.5" PointX="7" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTODOLISTModel.history" Width="1.5" PointX="0.625" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTODOLISTModel.role" Width="1.5" PointX="6.625" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTODOLISTModel.task" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTODOLISTModel.user" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
@@ -17,6 +17,8 @@
         <EntityTypeShape EntityType="DBTODOLISTModel.joinning" Width="1.5" PointX="9.5" PointY="4.625" />
         <AssociationConnector Association="DBTODOLISTModel.FK__joinning__task_i__5DCAEF64" />
         <AssociationConnector Association="DBTODOLISTModel.FK__joinning__user_i__5CD6CB2B" />
+        <AssociationConnector Association="DBTODOLISTModel.history_fk_user" />
+        <EntityTypeShape EntityType="DBTODOLISTModel.sysdiagram" Width="1.5" PointX="7.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

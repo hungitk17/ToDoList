@@ -13,6 +13,7 @@
           <Property Name="user_id" Type="varchar" MaxLength="15" />
           <Property Name="task_id" Type="varchar" MaxLength="15" />
           <Property Name="content" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_date" Type="datetime" />
         </EntityType>
         <EntityType Name="history">
           <Key>
@@ -38,6 +39,16 @@
           </Key>
           <Property Name="role_id" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="task">
           <Key>
@@ -135,11 +146,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="history_fk_user">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="history" Type="Self.history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="history">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBTODOLISTModelStoreContainer">
           <EntitySet Name="comment" EntityType="Self.comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="history" EntityType="Self.history" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="joinning" EntityType="Self.joinning" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="task" EntityType="Self.task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__comment__task_id__45F365D3" Association="Self.FK__comment__task_id__45F365D3">
@@ -166,6 +190,10 @@
             <End Role="roles" EntitySet="roles" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
+          <AssociationSet Name="history_fk_user" Association="Self.history_fk_user">
+            <End Role="users" EntitySet="users" />
+            <End Role="history" EntitySet="history" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -181,6 +209,7 @@
           <Property Name="content" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="task" Relationship="Self.FK__comment__task_id__45F365D3" FromRole="comment" ToRole="task" />
           <NavigationProperty Name="user" Relationship="Self.FK__comment__user_id__44FF419A" FromRole="comment" ToRole="users" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="history">
           <Key>
@@ -190,6 +219,7 @@
           <Property Name="user_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="action" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="user" Relationship="DBTODOLISTModel.history_fk_user" FromRole="history" ToRole="user" />
         </EntityType>
         <EntityType Name="role">
           <Key>
@@ -229,6 +259,7 @@
           <NavigationProperty Name="role" Relationship="Self.FK__users__role_id__3F466844" FromRole="users" ToRole="roles" />
           <NavigationProperty Name="tasks" Relationship="Self.FK__task__user_id__4222D4EF" FromRole="users" ToRole="task" />
           <NavigationProperty Name="joinnings" Relationship="DBTODOLISTModel.FK__joinning__user_i__5CD6CB2B" FromRole="user" ToRole="joinning" />
+          <NavigationProperty Name="histories" Relationship="DBTODOLISTModel.history_fk_user" FromRole="user" ToRole="history" />
         </EntityType>
         <Association Name="FK__comment__task_id__45F365D3">
           <End Role="task" Type="Self.task" Multiplicity="0..1" />
@@ -309,6 +340,11 @@
             <End Role="user" EntitySet="users" />
             <End Role="joinning" EntitySet="joinnings" />
           </AssociationSet>
+          <AssociationSet Name="history_fk_user" Association="DBTODOLISTModel.history_fk_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="history" EntitySet="histories" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="DBTODOLISTModel.sysdiagram" />
         </EntityContainer>
         <EntityType Name="joinning">
           <Key>
@@ -345,6 +381,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="history_fk_user">
+          <End Type="DBTODOLISTModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="DBTODOLISTModel.history" Role="history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="history">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -354,6 +412,7 @@
           <EntitySetMapping Name="comments">
             <EntityTypeMapping TypeName="DBTODOLISTModel.comment">
               <MappingFragment StoreEntitySet="comment">
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="comment_id" ColumnName="comment_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="task_id" ColumnName="task_id" />
@@ -411,6 +470,17 @@
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="task_id" ColumnName="task_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBTODOLISTModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

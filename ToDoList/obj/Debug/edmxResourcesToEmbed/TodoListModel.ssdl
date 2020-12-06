@@ -8,6 +8,7 @@
     <Property Name="user_id" Type="varchar" MaxLength="15" />
     <Property Name="task_id" Type="varchar" MaxLength="15" />
     <Property Name="content" Type="nvarchar" MaxLength="100" />
+    <Property Name="create_date" Type="datetime" />
   </EntityType>
   <EntityType Name="history">
     <Key>
@@ -33,6 +34,16 @@
     </Key>
     <Property Name="role_id" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="task">
     <Key>
@@ -130,11 +141,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="history_fk_user">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="history" Type="Self.history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="history">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DBTODOLISTModelStoreContainer">
     <EntitySet Name="comment" EntityType="Self.comment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="history" EntityType="Self.history" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="joinning" EntityType="Self.joinning" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="task" EntityType="Self.task" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__comment__task_id__45F365D3" Association="Self.FK__comment__task_id__45F365D3">
@@ -160,6 +184,10 @@
     <AssociationSet Name="FK__users__role_id__3F466844" Association="Self.FK__users__role_id__3F466844">
       <End Role="roles" EntitySet="roles" />
       <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="history_fk_user" Association="Self.history_fk_user">
+      <End Role="users" EntitySet="users" />
+      <End Role="history" EntitySet="history" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

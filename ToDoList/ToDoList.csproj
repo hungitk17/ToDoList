@@ -55,18 +55,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\Add_To_Do_BUS.cs" />
+    <Compile Include="BUS\Comment_BUS.cs" />
+    <Compile Include="BUS\History_BUS.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\Role_Users_BUS.cs" />
     <Compile Include="comment.cs">
       <DependentUpon>TodoListModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAO\Add_To_Do_DAO.cs" />
+    <Compile Include="DAO\Comment_DAO.cs" />
+    <Compile Include="DAO\History_DAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\Role_Users_DAO.cs" />
+    <Compile Include="DTO\Role_Users_DTO.cs" />
+    <Compile Include="GUI\Add_To_Do.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Add_To_Do.Designer.cs">
+      <DependentUpon>Add_To_Do.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Comment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Comment.Designer.cs">
+      <DependentUpon>Comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Edit_To_Do.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Edit_To_Do.Designer.cs">
+      <DependentUpon>Edit_To_Do.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Info_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Info_User.Designer.cs">
+      <DependentUpon>Info_User.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Role_Users.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Role_Users.Designer.cs">
       <DependentUpon>Role_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Thong_Ke_Trang_Thai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Thong_Ke_Trang_Thai.Designer.cs">
+      <DependentUpon>Thong_Ke_Trang_Thai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Thong_Ke_Tre_Han.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Thong_Ke_Tre_Han.Designer.cs">
+      <DependentUpon>Thong_Ke_Tre_Han.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\To_Do_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\To_Do_Main.Designer.cs">
+      <DependentUpon>To_Do_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="history.cs">
       <DependentUpon>TodoListModel.tt</DependentUpon>
@@ -83,6 +138,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="role.cs">
+      <DependentUpon>TodoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>TodoListModel.tt</DependentUpon>
     </Compile>
     <Compile Include="task.cs">
@@ -106,8 +164,32 @@
     <Compile Include="user.cs">
       <DependentUpon>TodoListModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\Add_To_Do.resx">
+      <DependentUpon>Add_To_Do.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Comment.resx">
+      <DependentUpon>Comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Edit_To_Do.resx">
+      <DependentUpon>Edit_To_Do.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\History.resx">
+      <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Info_User.resx">
+      <DependentUpon>Info_User.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Role_Users.resx">
       <DependentUpon>Role_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Thong_Ke_Trang_Thai.resx">
+      <DependentUpon>Thong_Ke_Trang_Thai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Thong_Ke_Tre_Han.resx">
+      <DependentUpon>Thong_Ke_Tre_Han.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\To_Do_Main.resx">
+      <DependentUpon>To_Do_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -120,6 +202,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -143,6 +226,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icons\setting-account.png" />
+    <None Include="Resources\logoToDoList-removebg-preview.png" />
+    <None Include="Resources\logoToDoList-removebg-preview.jpg" />
+    <None Include="Resources\logoToDoList-removebg-preview %281%29.png" />
+    <None Include="Resources\logoToDoList-removebg-preview %282%29.png" />
     <Content Include="TodoListModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TodoListModel.Context.cs</LastGenOutput>
@@ -157,8 +245,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

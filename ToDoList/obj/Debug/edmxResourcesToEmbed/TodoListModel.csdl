@@ -10,6 +10,7 @@
     <Property Name="content" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="task" Relationship="Self.FK__comment__task_id__45F365D3" FromRole="comment" ToRole="task" />
     <NavigationProperty Name="user" Relationship="Self.FK__comment__user_id__44FF419A" FromRole="comment" ToRole="users" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="history">
     <Key>
@@ -19,6 +20,7 @@
     <Property Name="user_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="action" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
     <Property Name="create_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="user" Relationship="DBTODOLISTModel.history_fk_user" FromRole="history" ToRole="user" />
   </EntityType>
   <EntityType Name="role">
     <Key>
@@ -58,6 +60,7 @@
     <NavigationProperty Name="role" Relationship="Self.FK__users__role_id__3F466844" FromRole="users" ToRole="roles" />
     <NavigationProperty Name="tasks" Relationship="Self.FK__task__user_id__4222D4EF" FromRole="users" ToRole="task" />
     <NavigationProperty Name="joinnings" Relationship="DBTODOLISTModel.FK__joinning__user_i__5CD6CB2B" FromRole="user" ToRole="joinning" />
+    <NavigationProperty Name="histories" Relationship="DBTODOLISTModel.history_fk_user" FromRole="user" ToRole="history" />
   </EntityType>
   <Association Name="FK__comment__task_id__45F365D3">
     <End Role="task" Type="Self.task" Multiplicity="0..1" />
@@ -138,6 +141,11 @@
       <End Role="user" EntitySet="users" />
       <End Role="joinning" EntitySet="joinnings" />
     </AssociationSet>
+    <AssociationSet Name="history_fk_user" Association="DBTODOLISTModel.history_fk_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="history" EntitySet="histories" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="DBTODOLISTModel.sysdiagram" />
   </EntityContainer>
   <EntityType Name="joinning">
     <Key>
@@ -174,4 +182,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="history_fk_user">
+    <End Type="DBTODOLISTModel.user" Role="user" Multiplicity="0..1" />
+    <End Type="DBTODOLISTModel.history" Role="history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="history">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

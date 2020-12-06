@@ -20,6 +20,7 @@ namespace ToDoList
             this.comments = new HashSet<comment>();
             this.tasks = new HashSet<task>();
             this.joinnings = new HashSet<joinning>();
+            this.histories = new HashSet<history>();
         }
     
         public string user_id { get; set; }
@@ -36,5 +37,7 @@ namespace ToDoList
         public virtual ICollection<task> tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<joinning> joinnings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<history> histories { get; set; }
     }
 }

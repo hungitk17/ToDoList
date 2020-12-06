@@ -31,5 +31,6 @@ namespace ToDoList
         public virtual DbSet<task> tasks { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<joinning> joinnings { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

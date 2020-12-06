@@ -18,6 +18,7 @@ namespace ToDoList
         public string user_id { get; set; }
         public string task_id { get; set; }
         public string content { get; set; }
+        public Nullable<System.DateTime> create_date { get; set; }
     
         public virtual task task { get; set; }
         public virtual user user { get; set; }

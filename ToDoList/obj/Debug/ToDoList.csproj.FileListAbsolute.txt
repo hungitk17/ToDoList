@@ -14,3 +14,11 @@ E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\EntityFramework.xml
 E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\bin\Debug\EntityFramework.SqlServer.xml
 E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.CopyComplete
 E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Role_Users.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Add_To_Do.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Edit_To_Do.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Info_User.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.To_Do_Main.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Thong_Ke_Tre_Han.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Comment.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.History.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Thong_Ke_Trang_Thai.resources

@@ -13,5 +13,10 @@ namespace ToDoList.BUS
         {
             return new DAO.LoginDAO().check_login(userName, password);
         }
+
+        public ArrayList get_Info_User(String userName)
+        {
+            return new DAO.LoginDAO().get_Info_User(userName);
+        }
     }
 }

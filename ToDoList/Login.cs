@@ -20,15 +20,17 @@ namespace ToDoList
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            this.Close();
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(MessageBox.Show("Bạn có thực sự muốn thoát chương trình?","Thông Báo" ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2/*, MessageBoxOptions.ServiceNotification*/) != System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Bạn có thực sự muốn thoát chương trình?", "Thông Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.OK)
             {
                 e.Cancel = true;
             }
+
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -39,7 +41,10 @@ namespace ToDoList
             ArrayList result = loginBus.check_login(userName,password);
             if(result[0].ToString() == "success")
             {
-                GUI.Role_Users view = new GUI.Role_Users();
+                //GUI.Role_Users view = new GUI.Role_Users(result[1].ToString(),userName);
+                //this.Hide();
+                //view.ShowDialog();
+                GUI.To_Do_Main view = new GUI.To_Do_Main(result[1].ToString(), userName);
                 this.Hide();
                 view.ShowDialog();
             }
@@ -55,5 +60,6 @@ namespace ToDoList
         {
 
         }
+
     }
 }
