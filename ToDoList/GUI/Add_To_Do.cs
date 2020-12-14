@@ -41,7 +41,7 @@ namespace ToDoList.GUI
             {
                 if(item.user_id != this.userName)
                 {
-                    data.Add(item.fullname);
+                    data.Add(item.user_id + "-" + item.fullname);
                 }
             }
 
@@ -159,7 +159,16 @@ namespace ToDoList.GUI
             DateTime ngaybatdau = ngaybatdaudata.Value;
             DateTime ngayketthuc = ngayketthucdata.Value;
             string result = "";
-            if(tencongviec == "")
+            string task_id = txbtaskid.Text;
+            if(task_id.Contains("-"))
+            {
+                result += "Trong mã công việc không được chứa dấu - \n";
+            }
+            if (new DAO.Add_To_Do_DAO().check_exists_task_id(task_id) == 1)
+            {
+                result += "Mã công việc " + task_id + " đã tồn tại! \n";
+            }
+            if (tencongviec == "")
             {
                 result += "Tên công việc không được bỏ trống! \n";
             }
@@ -179,12 +188,23 @@ namespace ToDoList.GUI
             {
                 MessageBox.Show(result, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            List<string> temp = new List<string>();
-            for (int i = 0; i < listBoxAdd2.Items.Count; i++)
+            else
             {
-                temp.Add(listBoxAdd2.Items[i].ToString());
+                string[] subs;
+                List<string> temp = new List<string>();
+                for (int i = 0; i < listBoxAdd2.Items.Count; i++)
+                {
+                    subs = listBoxAdd2.Items[i].ToString().Split('-');
+                    temp.Add(subs[0]);
+                }
+                new BUS.Add_To_Do_BUS().add_task(task_id, this.userName, tencongviec, score, status, ngaybatdau, ngayketthuc, temp);
+                if(MessageBox.Show("Thêm công việc thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.Close();
+                }
+                //this.Close();
             }
+
         }
     }
 }

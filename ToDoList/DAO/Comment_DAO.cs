@@ -14,10 +14,10 @@ namespace ToDoList.DAO
         public IEnumerable load_comment(string task_id)
         {
             var result = from c in DB.comments
+                         join t in DB.tasks
+                         on c.task_id equals t.task_id
                          join u in DB.users
                          on c.user_id equals u.user_id
-                         join t in DB.tasks
-                         on u.user_id equals t.user_id
                          where t.task_id == task_id
                          orderby c.create_date ascending
                          select new
@@ -54,10 +54,15 @@ namespace ToDoList.DAO
             return res.ToList();
         }
 
-        public int comment(string task_id, string user_id, string content, string comment_id)
+        public int comment(string task_id, string user_id, string content)
         {
+            history h = new history();
+            h.user_id = user_id;
+            h.action = "Thêm bình luận trong task " + task_id;
+            h.create_date = DateTime.Now;
+            DB.histories.Add(h);
             DateTime now = DateTime.Now; //.ToString("yyyy-MM-dd hh:mm:ss")
-            comment c = new comment() { comment_id = comment_id, task_id = task_id, user_id = user_id, content = content, create_date = now };
+            comment c = new comment() { task_id = task_id, user_id = user_id, content = content, create_date = now };
             DB.comments.Add(c);
             DB.SaveChanges();
             return 1;
@@ -70,11 +75,31 @@ namespace ToDoList.DAO
             {
                 if(email == item.email)
                 {
-                    return 1;
+                    return 1; //ton tai
                 }
             }
-            return 0;
+            return 0; //chua ton tai
         }
 
+        public int delete_comment(string user_id_exe, string user_id, string task_id, string content, DateTime create_date)
+        {
+            comment res = DB.comments.Where(c => c.user_id == user_id && c.task_id == task_id && c.content == content /*&& c.create_date == create_date*/).FirstOrDefault();
+            if(res != null)
+            {
+                DB.comments.Remove(res);
+                history h = new history();
+                h.user_id = user_id_exe;
+                h.action = "Xóa bình luận trong task " + task_id;
+                h.create_date = DateTime.Now;
+                DB.histories.Add(h);
+                DB.SaveChanges();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            
+        }
     }
 }

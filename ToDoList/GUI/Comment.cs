@@ -13,8 +13,7 @@ namespace ToDoList.GUI
     public partial class Comment : Form
     {
         public string task_id = "";
-        public string user_id = "";
-        public int key_id_comment = 5;
+        public string user_id_exe = "";
         public Comment()
         {
             InitializeComponent();
@@ -24,7 +23,7 @@ namespace ToDoList.GUI
         public Comment(string task_id, string user_id)
         {
             this.task_id = task_id;
-            this.user_id = user_id;
+            this.user_id_exe = user_id;
             InitializeComponent();
             load_data();
         }
@@ -80,10 +79,28 @@ namespace ToDoList.GUI
 
         private void BtnComment_Click(object sender, EventArgs e)
         {
-            new BUS.Comment_BUS().comment(this.task_id,this.user_id,txbComment.Text, "cm_" + this.key_id_comment);
-            this.key_id_comment = this.key_id_comment + 1;
+            new BUS.Comment_BUS().comment(this.task_id,this.user_id_exe,txbComment.Text);
             load_data();
             MessageBox.Show("Gửi bình luận thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txbComment.Text = "";
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            string task_id = dataGridViewCommentList.CurrentRow.Cells[2].Value.ToString();
+            string user_id = dataGridViewCommentList.CurrentRow.Cells[0].Value.ToString();
+            string content = dataGridViewCommentList.CurrentRow.Cells[4].Value.ToString();
+            DateTime create_date = (DateTime)dataGridViewCommentList.CurrentRow.Cells[5].Value;
+            int res = new BUS.Comment_BUS().delete_comment(this.user_id_exe, user_id,task_id,content,create_date);
+            if(res == 1)
+            {
+                MessageBox.Show("Xóa bình luận thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                load_data();
+            }
+            else
+            {
+                MessageBox.Show("Xóa bình luận thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

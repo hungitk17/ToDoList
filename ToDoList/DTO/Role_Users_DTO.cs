@@ -8,6 +8,7 @@ namespace ToDoList.DTO
 {
     class Role_Users_DTO
     {
+        public String user_id;
         public String task_id;
         public String tencongviec;
         public String nguoitao;
@@ -24,8 +25,9 @@ namespace ToDoList.DTO
 
         }
 
-        public Role_Users_DTO(String task_id, String tencongviec, String nguoitao, String tennguoitao, Nullable<DateTime> ngaybatdau, Nullable<DateTime> ngayketthuc, String phamvi, String trangthai)
+        public Role_Users_DTO(String user_id, String task_id, String tencongviec, String nguoitao, String tennguoitao, Nullable<DateTime> ngaybatdau, Nullable<DateTime> ngayketthuc, String phamvi, String trangthai)
         {
+            this.user_id = user_id;
             this.task_id = task_id;
             this.tencongviec = tencongviec;
             this.nguoitao = nguoitao;

@@ -60,6 +60,7 @@
     <Compile Include="BUS\History_BUS.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\Role_Users_BUS.cs" />
+    <Compile Include="BUS\Thong_Ke_BUS.cs" />
     <Compile Include="comment.cs">
       <DependentUpon>TodoListModel.tt</DependentUpon>
     </Compile>
@@ -68,12 +69,19 @@
     <Compile Include="DAO\History_DAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\Role_Users_DAO.cs" />
+    <Compile Include="DAO\Thong_Ke_DAO.cs" />
     <Compile Include="DTO\Role_Users_DTO.cs" />
     <Compile Include="GUI\Add_To_Do.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Add_To_Do.Designer.cs">
       <DependentUpon>Add_To_Do.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Add_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Add_User.Designer.cs">
+      <DependentUpon>Add_User.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Comment.cs">
       <SubType>Form</SubType>
@@ -86,6 +94,12 @@
     </Compile>
     <Compile Include="GUI\Edit_To_Do.Designer.cs">
       <DependentUpon>Edit_To_Do.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Edit_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Edit_User.Designer.cs">
+      <DependentUpon>Edit_User.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\History.cs">
       <SubType>Form</SubType>
@@ -167,11 +181,17 @@
     <EmbeddedResource Include="GUI\Add_To_Do.resx">
       <DependentUpon>Add_To_Do.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Add_User.resx">
+      <DependentUpon>Add_User.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Comment.resx">
       <DependentUpon>Comment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Edit_To_Do.resx">
       <DependentUpon>Edit_To_Do.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Edit_User.resx">
+      <DependentUpon>Edit_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\History.resx">
       <DependentUpon>History.cs</DependentUpon>

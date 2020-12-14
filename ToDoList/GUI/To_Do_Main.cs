@@ -16,18 +16,24 @@ namespace ToDoList.GUI
     {
         private string fullName = "";
         public string userName = "";
+        public string role_id = "";
         public To_Do_Main()
         {
             InitializeComponent();
             customizeDesing();
         }
    
-        public To_Do_Main(string fullName, string userName)
+        public To_Do_Main(string fullName, string userName, string role_id)
         {
+            this.role_id = role_id;
             this.fullName = fullName;
             this.userName = userName;
             InitializeComponent();
             customizeDesing();
+            if(this.role_id == "002")
+            {
+                btnHistory.Visible = false;
+            }
         }
 
         public Form activeForm = null;
@@ -77,21 +83,21 @@ namespace ToDoList.GUI
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            openChildForm(new Thong_Ke_Tre_Han());
+            openChildForm(new Thong_Ke_Tre_Han(this.userName));
             // Thong ke cong viec tre hen
             hideSubMenu();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            openChildForm(new Thong_Ke_Trang_Thai());
+            openChildForm(new Thong_Ke_Trang_Thai(this.userName));
             // Thong ke cong viec theo trang thai
             hideSubMenu();
         }
 
         private void ManagementToDo_Click(object sender, EventArgs e)
         {
-            openChildForm(new Role_Users(this.fullName.ToString(), this.userName));
+            openChildForm(new Role_Users(/*this.fullName.ToString(),*/ this.userName, this.role_id));
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -110,7 +116,7 @@ namespace ToDoList.GUI
 
         private void ManagementUser_Click(object sender, EventArgs e)
         {
-            openChildForm(new Info_User(this.userName));
+            openChildForm(new Info_User(this.userName, this.role_id));
         }
 
         private void BtnHistory_Click(object sender, EventArgs e)

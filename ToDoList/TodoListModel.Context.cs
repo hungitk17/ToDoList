@@ -25,12 +25,12 @@ namespace ToDoList
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<comment> comments { get; set; }
-        public virtual DbSet<history> histories { get; set; }
         public virtual DbSet<role> roles { get; set; }
         public virtual DbSet<task> tasks { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<joinning> joinnings { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<comment> comments { get; set; }
+        public virtual DbSet<history> histories { get; set; }
     }
 }

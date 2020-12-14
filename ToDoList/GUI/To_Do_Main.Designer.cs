@@ -120,6 +120,7 @@
             this.button2.ForeColor = System.Drawing.SystemColors.MenuBar;
             this.button2.Location = new System.Drawing.Point(0, 45);
             this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.button2.Size = new System.Drawing.Size(250, 45);
             this.button2.TabIndex = 1;
             this.button2.Text = "Công việc theo trạng thái";
@@ -135,6 +136,7 @@
             this.button1.ForeColor = System.Drawing.SystemColors.MenuBar;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(250, 45);
             this.button1.TabIndex = 0;
             this.button1.Text = "Công việc trễ hạn";

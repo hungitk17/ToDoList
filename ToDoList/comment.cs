@@ -14,7 +14,7 @@ namespace ToDoList
     
     public partial class comment
     {
-        public string comment_id { get; set; }
+        public int comment_id { get; set; }
         public string user_id { get; set; }
         public string task_id { get; set; }
         public string content { get; set; }

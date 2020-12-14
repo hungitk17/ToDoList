@@ -32,14 +32,16 @@
             this.txbNameDoEdit = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txbTaskId = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.listBoxEdit2 = new System.Windows.Forms.ListBox();
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.btnLeftAll = new System.Windows.Forms.Button();
+            this.btnRightALl = new System.Windows.Forms.Button();
+            this.listBoxEdit = new System.Windows.Forms.ListBox();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.listBoxCopy = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnPre = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.listBoxSrc = new System.Windows.Forms.ListBox();
             this.button1edit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,10 +57,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(263, 9);
+            this.label2.Font = new System.Drawing.Font("Arial", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(244, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(279, 44);
+            this.label2.Size = new System.Drawing.Size(327, 45);
             this.label2.TabIndex = 5;
             this.label2.Text = "SỬA CÔNG VIỆC";
             // 
@@ -82,14 +84,16 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.txbTaskId);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.listBoxEdit2);
+            this.panel1.Controls.Add(this.btnLeft);
+            this.panel1.Controls.Add(this.btnRight);
+            this.panel1.Controls.Add(this.btnLeftAll);
+            this.panel1.Controls.Add(this.btnRightALl);
+            this.panel1.Controls.Add(this.listBoxEdit);
+            this.panel1.Controls.Add(this.comboBoxStatus);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.listBoxCopy);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.btnPre);
-            this.panel1.Controls.Add(this.btnNext);
-            this.panel1.Controls.Add(this.listBoxSrc);
             this.panel1.Controls.Add(this.button1edit);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.label6);
@@ -106,98 +110,118 @@
             this.panel1.Size = new System.Drawing.Size(776, 523);
             this.panel1.TabIndex = 6;
             // 
-            // comboBox1
+            // txbTaskId
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Public",
-            "Private"});
-            this.comboBox1.Location = new System.Drawing.Point(156, 70);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(216, 33);
-            this.comboBox1.TabIndex = 29;
+            this.txbTaskId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbTaskId.Location = new System.Drawing.Point(156, 73);
+            this.txbTaskId.Name = "txbTaskId";
+            this.txbTaskId.ReadOnly = true;
+            this.txbTaskId.Size = new System.Drawing.Size(216, 30);
+            this.txbTaskId.TabIndex = 37;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(7, 76);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(134, 25);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Mã công việc:";
+            // 
+            // listBoxEdit2
+            // 
+            this.listBoxEdit2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxEdit2.FormattingEnabled = true;
+            this.listBoxEdit2.ItemHeight = 20;
+            this.listBoxEdit2.Location = new System.Drawing.Point(507, 202);
+            this.listBoxEdit2.Name = "listBoxEdit2";
+            this.listBoxEdit2.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxEdit2.Size = new System.Drawing.Size(253, 244);
+            this.listBoxEdit2.TabIndex = 35;
+            // 
+            // btnLeft
+            // 
+            this.btnLeft.AutoSize = true;
+            this.btnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeft.Location = new System.Drawing.Point(445, 282);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(46, 35);
+            this.btnLeft.TabIndex = 34;
+            this.btnLeft.Text = "<";
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.BtnLeft_Click);
+            // 
+            // btnRight
+            // 
+            this.btnRight.AutoSize = true;
+            this.btnRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRight.Location = new System.Drawing.Point(445, 218);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(46, 35);
+            this.btnRight.TabIndex = 33;
+            this.btnRight.Text = ">";
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.BtnRight_Click);
+            // 
+            // btnLeftAll
+            // 
+            this.btnLeftAll.AutoSize = true;
+            this.btnLeftAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeftAll.Location = new System.Drawing.Point(445, 401);
+            this.btnLeftAll.Name = "btnLeftAll";
+            this.btnLeftAll.Size = new System.Drawing.Size(46, 35);
+            this.btnLeftAll.TabIndex = 32;
+            this.btnLeftAll.Text = "<<";
+            this.btnLeftAll.UseVisualStyleBackColor = true;
+            this.btnLeftAll.Click += new System.EventHandler(this.BtnLeftAll_Click);
+            // 
+            // btnRightALl
+            // 
+            this.btnRightALl.AutoSize = true;
+            this.btnRightALl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRightALl.Location = new System.Drawing.Point(445, 344);
+            this.btnRightALl.Name = "btnRightALl";
+            this.btnRightALl.Size = new System.Drawing.Size(46, 35);
+            this.btnRightALl.TabIndex = 31;
+            this.btnRightALl.Text = ">>";
+            this.btnRightALl.UseVisualStyleBackColor = true;
+            this.btnRightALl.Click += new System.EventHandler(this.BtnRightALl_Click);
+            // 
+            // listBoxEdit
+            // 
+            this.listBoxEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxEdit.FormattingEnabled = true;
+            this.listBoxEdit.ItemHeight = 20;
+            this.listBoxEdit.Location = new System.Drawing.Point(179, 202);
+            this.listBoxEdit.Name = "listBoxEdit";
+            this.listBoxEdit.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxEdit.Size = new System.Drawing.Size(252, 244);
+            this.listBoxEdit.TabIndex = 30;
+            // 
+            // comboBoxStatus
+            // 
+            this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Items.AddRange(new object[] {
+            "Đang làm",
+            "Đã xong",
+            "Trễ hạn"});
+            this.comboBoxStatus.Location = new System.Drawing.Point(542, 70);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(216, 33);
+            this.comboBoxStatus.TabIndex = 29;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(7, 73);
+            this.label7.Location = new System.Drawing.Point(393, 73);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 25);
             this.label7.TabIndex = 28;
             this.label7.Text = "Trạng thái";
-            // 
-            // listBoxCopy
-            // 
-            this.listBoxCopy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxCopy.FormattingEnabled = true;
-            this.listBoxCopy.ItemHeight = 25;
-            this.listBoxCopy.Items.AddRange(new object[] {
-            "Trần Văn Hùng",
-            "Trần Văn Hoàng",
-            "Nguyễn Văn Hoàng"});
-            this.listBoxCopy.Location = new System.Drawing.Point(510, 212);
-            this.listBoxCopy.Name = "listBoxCopy";
-            this.listBoxCopy.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxCopy.Size = new System.Drawing.Size(200, 229);
-            this.listBoxCopy.TabIndex = 27;
-            // 
-            // button2
-            // 
-            this.button2.AutoSize = true;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(405, 284);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 35);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.AutoSize = true;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(405, 222);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 35);
-            this.button3.TabIndex = 25;
-            this.button3.Text = ">";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnPre
-            // 
-            this.btnPre.AutoSize = true;
-            this.btnPre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPre.Location = new System.Drawing.Point(405, 397);
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(87, 35);
-            this.btnPre.TabIndex = 24;
-            this.btnPre.Text = "<<";
-            this.btnPre.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.AutoSize = true;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(405, 339);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(87, 35);
-            this.btnNext.TabIndex = 23;
-            this.btnNext.Text = ">>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // listBoxSrc
-            // 
-            this.listBoxSrc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxSrc.FormattingEnabled = true;
-            this.listBoxSrc.ItemHeight = 25;
-            this.listBoxSrc.Location = new System.Drawing.Point(188, 212);
-            this.listBoxSrc.Name = "listBoxSrc";
-            this.listBoxSrc.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxSrc.Size = new System.Drawing.Size(200, 229);
-            this.listBoxSrc.TabIndex = 22;
             // 
             // button1edit
             // 
@@ -221,12 +245,13 @@
             this.btnEdit.TabIndex = 12;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(9, 284);
+            this.label6.Location = new System.Drawing.Point(9, 228);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 25);
             this.label6.TabIndex = 10;
@@ -287,7 +312,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(393, 7);
+            this.label3.Location = new System.Drawing.Point(395, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 25);
             this.label3.TabIndex = 4;
@@ -325,13 +350,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbbScoreEdit;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBoxCopy;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnPre;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.ListBox listBoxSrc;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxStatus;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListBox listBoxEdit2;
+        private System.Windows.Forms.Button btnLeft;
+        private System.Windows.Forms.Button btnRight;
+        private System.Windows.Forms.Button btnLeftAll;
+        private System.Windows.Forms.Button btnRightALl;
+        private System.Windows.Forms.ListBox listBoxEdit;
+        private System.Windows.Forms.TextBox txbTaskId;
+        private System.Windows.Forms.Label label8;
     }
 }

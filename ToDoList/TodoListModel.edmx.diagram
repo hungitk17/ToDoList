@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d03caf0e419243f4b2a2421e44dd5f7b" Name="Diagram1">
-        <EntityTypeShape EntityType="DBTODOLISTModel.comment" Width="1.5" PointX="1.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTODOLISTModel.history" Width="1.5" PointX="0.625" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTODOLISTModel.role" Width="1.5" PointX="6.625" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTODOLISTModel.task" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTODOLISTModel.task" Width="1.5" PointX="10.875" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTODOLISTModel.user" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
-        <AssociationConnector Association="DBTODOLISTModel.FK__comment__task_id__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="DBTODOLISTModel.FK__comment__user_id__44FF419A" ManuallyRouted="false" />
         <AssociationConnector Association="DBTODOLISTModel.FK__users__role_id__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="DBTODOLISTModel.FK__task__user_id__4222D4EF" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DBTODOLISTModel.joinning" Width="1.5" PointX="9.5" PointY="4.625" />
+        <EntityTypeShape EntityType="DBTODOLISTModel.joinning" Width="1.5" PointX="6.25" PointY="5" />
         <AssociationConnector Association="DBTODOLISTModel.FK__joinning__task_i__5DCAEF64" />
         <AssociationConnector Association="DBTODOLISTModel.FK__joinning__user_i__5CD6CB2B" />
-        <AssociationConnector Association="DBTODOLISTModel.history_fk_user" />
         <EntityTypeShape EntityType="DBTODOLISTModel.sysdiagram" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DBTODOLISTModel.comment" Width="1.5" PointX="3.375" PointY="6.625" />
+        <AssociationConnector Association="DBTODOLISTModel.FK__comment__task_id__07C12930" />
+        <AssociationConnector Association="DBTODOLISTModel.FK__comment__user_id__06CD04F7" />
+        <EntityTypeShape EntityType="DBTODOLISTModel.history" Width="1.5" PointX="0.5" PointY="4.875" />
+        <AssociationConnector Association="DBTODOLISTModel.fk_history_users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

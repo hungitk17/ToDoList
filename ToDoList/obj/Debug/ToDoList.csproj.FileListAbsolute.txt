@@ -22,3 +22,5 @@ E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Thong_
 E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Comment.resources
 E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.History.resources
 E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Thong_Ke_Trang_Thai.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Add_User.resources
+E:\tour-management-PTUD\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.GUI.Edit_User.resources

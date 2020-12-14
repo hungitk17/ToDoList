@@ -39,12 +39,13 @@ namespace ToDoList
             String userName = txbUserName.Text;
             String password = txbPassword.Text;
             ArrayList result = loginBus.check_login(userName,password);
+            //001-Lanh Dao 002-NhanVien
             if(result[0].ToString() == "success")
             {
                 //GUI.Role_Users view = new GUI.Role_Users(result[1].ToString(),userName);
                 //this.Hide();
                 //view.ShowDialog();
-                GUI.To_Do_Main view = new GUI.To_Do_Main(result[1].ToString(), userName);
+                GUI.To_Do_Main view = new GUI.To_Do_Main(result[1].ToString(), result[3].ToString(), result[2].ToString());
                 this.Hide();
                 view.ShowDialog();
             }
@@ -60,6 +61,5 @@ namespace ToDoList
         {
 
         }
-
     }
 }

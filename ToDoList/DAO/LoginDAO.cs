@@ -18,6 +18,8 @@ namespace ToDoList.DAO
             {
                 arr_info_user.Add("success");
                 arr_info_user.Add(result.fullname);
+                arr_info_user.Add(result.role_id);
+                arr_info_user.Add(result.user_id);
             }
             else
             {
@@ -38,11 +40,11 @@ namespace ToDoList.DAO
             arr_info_user.Add(result.pass);
             if (result.role_id == "001")
             {
-                arr_info_user.Add("Giám Đốc");
+                arr_info_user.Add("Lãnh đạo");
             }
             else
             {
-                arr_info_user.Add("Nhân Viên");
+                arr_info_user.Add("Nhân viên");
             }
 
             return arr_info_user;

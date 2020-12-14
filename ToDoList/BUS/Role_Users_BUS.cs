@@ -54,5 +54,40 @@ namespace ToDoList.BUS
         {
             return new DAO.Role_Users_DAO().nameOfUser(user_id);
         }
+
+        public IEnumerable load_role()
+        {
+            return new DAO.Role_Users_DAO().load_role();
+        }
+
+        public int check_uesr_name(string userName)
+        {
+            return new DAO.Role_Users_DAO().check_uesr_name(userName);
+        }
+
+        public int check_email_exists(string email)
+        {
+            return new DAO.Role_Users_DAO().check_email_exists(email);
+        }
+
+        public int add_user(string user_id_exe,string fullname, string email, string role, string sdt, string userName, string password)
+        {
+            return new DAO.Role_Users_DAO().add_user(user_id_exe,fullname, email,role,sdt,userName,password);
+        }
+
+        public int check_user_exit(string user_id)
+        {
+            return new DAO.Role_Users_DAO().check_user_exit(user_id);
+        }
+
+        public int delete_user(string user_id_exe,string user_id)
+        {
+            return new DAO.Role_Users_DAO().delete_user(user_id_exe,user_id);
+        }
+
+        public int edit_user(string user_id_exe,string fullname, string sdt, string userName, string pass)
+        {
+            return new DAO.Role_Users_DAO().edit_user(user_id_exe,fullname, sdt, userName, pass);
+        }
     }
 }

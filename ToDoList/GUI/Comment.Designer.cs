@@ -37,12 +37,14 @@
             this.txbSearchHistory = new System.Windows.Forms.TextBox();
             this.dataGridViewCommentList = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCommentList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnDelete);
             this.panel3.Controls.Add(this.btnSearchComment);
             this.panel3.Controls.Add(this.btnComment);
             this.panel3.Controls.Add(this.txbComment);
@@ -144,6 +146,18 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "DANH SÁCH BÌNH LUẬN CỦA CÔNG VIỆC";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(848, 49);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(101, 35);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "Xóa";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
             // Comment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -170,5 +184,6 @@
         private System.Windows.Forms.Button btnComment;
         private System.Windows.Forms.TextBox txbComment;
         private System.Windows.Forms.Button btnSearchComment;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

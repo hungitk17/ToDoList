@@ -32,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txbNameDo = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txbtaskid = new System.Windows.Forms.TextBox();
+            this.lableTaskId = new System.Windows.Forms.Label();
             this.cbbState = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.listBoxAdd2 = new System.Windows.Forms.ListBox();
@@ -83,6 +85,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txbtaskid);
+            this.panel1.Controls.Add(this.lableTaskId);
             this.panel1.Controls.Add(this.cbbState);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.listBoxAdd2);
@@ -107,6 +111,24 @@
             this.panel1.Size = new System.Drawing.Size(776, 525);
             this.panel1.TabIndex = 4;
             // 
+            // txbtaskid
+            // 
+            this.txbtaskid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbtaskid.Location = new System.Drawing.Point(154, 72);
+            this.txbtaskid.Name = "txbtaskid";
+            this.txbtaskid.Size = new System.Drawing.Size(216, 30);
+            this.txbtaskid.TabIndex = 25;
+            // 
+            // lableTaskId
+            // 
+            this.lableTaskId.AutoSize = true;
+            this.lableTaskId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lableTaskId.Location = new System.Drawing.Point(7, 75);
+            this.lableTaskId.Name = "lableTaskId";
+            this.lableTaskId.Size = new System.Drawing.Size(134, 25);
+            this.lableTaskId.TabIndex = 24;
+            this.lableTaskId.Text = "Mã công việc:";
+            // 
             // cbbState
             // 
             this.cbbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -116,7 +138,7 @@
             "Đang Làm",
             "Đã xong",
             "Trễ hạn"});
-            this.cbbState.Location = new System.Drawing.Point(154, 69);
+            this.cbbState.Location = new System.Drawing.Point(542, 74);
             this.cbbState.Name = "cbbState";
             this.cbbState.Size = new System.Drawing.Size(216, 33);
             this.cbbState.TabIndex = 23;
@@ -125,7 +147,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(7, 72);
+            this.label7.Location = new System.Drawing.Point(392, 77);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 25);
             this.label7.TabIndex = 22;
@@ -133,22 +155,22 @@
             // 
             // listBoxAdd2
             // 
-            this.listBoxAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxAdd2.FormattingEnabled = true;
-            this.listBoxAdd2.ItemHeight = 25;
-            this.listBoxAdd2.Location = new System.Drawing.Point(503, 208);
+            this.listBoxAdd2.ItemHeight = 20;
+            this.listBoxAdd2.Location = new System.Drawing.Point(505, 208);
             this.listBoxAdd2.Name = "listBoxAdd2";
             this.listBoxAdd2.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxAdd2.Size = new System.Drawing.Size(200, 254);
+            this.listBoxAdd2.Size = new System.Drawing.Size(253, 244);
             this.listBoxAdd2.TabIndex = 21;
             // 
             // btnLeft
             // 
             this.btnLeft.AutoSize = true;
-            this.btnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLeft.Location = new System.Drawing.Point(398, 284);
+            this.btnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeft.Location = new System.Drawing.Point(443, 288);
             this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(87, 35);
+            this.btnLeft.Size = new System.Drawing.Size(46, 35);
             this.btnLeft.TabIndex = 20;
             this.btnLeft.Text = "<";
             this.btnLeft.UseVisualStyleBackColor = true;
@@ -157,10 +179,10 @@
             // btnRight
             // 
             this.btnRight.AutoSize = true;
-            this.btnRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRight.Location = new System.Drawing.Point(398, 219);
+            this.btnRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRight.Location = new System.Drawing.Point(443, 224);
             this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(87, 35);
+            this.btnRight.Size = new System.Drawing.Size(46, 35);
             this.btnRight.TabIndex = 19;
             this.btnRight.Text = ">";
             this.btnRight.UseVisualStyleBackColor = true;
@@ -169,10 +191,10 @@
             // btnLeftAll
             // 
             this.btnLeftAll.AutoSize = true;
-            this.btnLeftAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLeftAll.Location = new System.Drawing.Point(398, 417);
+            this.btnLeftAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeftAll.Location = new System.Drawing.Point(443, 407);
             this.btnLeftAll.Name = "btnLeftAll";
-            this.btnLeftAll.Size = new System.Drawing.Size(87, 35);
+            this.btnLeftAll.Size = new System.Drawing.Size(46, 35);
             this.btnLeftAll.TabIndex = 18;
             this.btnLeftAll.Text = "<<";
             this.btnLeftAll.UseVisualStyleBackColor = true;
@@ -181,10 +203,10 @@
             // btnRightALl
             // 
             this.btnRightALl.AutoSize = true;
-            this.btnRightALl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRightALl.Location = new System.Drawing.Point(398, 350);
+            this.btnRightALl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRightALl.Location = new System.Drawing.Point(443, 350);
             this.btnRightALl.Name = "btnRightALl";
-            this.btnRightALl.Size = new System.Drawing.Size(87, 35);
+            this.btnRightALl.Size = new System.Drawing.Size(46, 35);
             this.btnRightALl.TabIndex = 16;
             this.btnRightALl.Text = ">>";
             this.btnRightALl.UseVisualStyleBackColor = true;
@@ -192,13 +214,13 @@
             // 
             // listBoxAdd
             // 
-            this.listBoxAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxAdd.FormattingEnabled = true;
-            this.listBoxAdd.ItemHeight = 25;
-            this.listBoxAdd.Location = new System.Drawing.Point(181, 208);
+            this.listBoxAdd.ItemHeight = 20;
+            this.listBoxAdd.Location = new System.Drawing.Point(177, 208);
             this.listBoxAdd.Name = "listBoxAdd";
             this.listBoxAdd.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxAdd.Size = new System.Drawing.Size(200, 254);
+            this.listBoxAdd.Size = new System.Drawing.Size(252, 244);
             this.listBoxAdd.TabIndex = 15;
             // 
             // button1
@@ -229,7 +251,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(11, 229);
+            this.label6.Location = new System.Drawing.Point(7, 229);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 25);
             this.label6.TabIndex = 10;
@@ -340,5 +362,7 @@
         private System.Windows.Forms.Button btnRightALl;
         private System.Windows.Forms.ComboBox cbbState;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txbtaskid;
+        private System.Windows.Forms.Label lableTaskId;
     }
 }

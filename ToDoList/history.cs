@@ -14,7 +14,7 @@ namespace ToDoList
     
     public partial class history
     {
-        public string his_id { get; set; }
+        public int his_id { get; set; }
         public string user_id { get; set; }
         public string action { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }

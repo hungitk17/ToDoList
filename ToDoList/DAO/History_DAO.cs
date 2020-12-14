@@ -38,7 +38,7 @@ namespace ToDoList.DAO
                              his_id = h.his_id,
                              action = h.action
                          };
-            var res = result.Where(h => h.action.Contains(textSearch) || h.his_id.Contains(textSearch) || h.user_id.Contains(textSearch) || h.fullname.Contains(textSearch));
+            var res = result.Where(h => h.action.Contains(textSearch) || h.his_id.ToString() == textSearch || h.user_id.Contains(textSearch) || h.fullname.Contains(textSearch));
             return res.ToList();
         }
     }

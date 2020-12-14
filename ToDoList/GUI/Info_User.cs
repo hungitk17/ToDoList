@@ -15,15 +15,26 @@ namespace ToDoList.GUI
     public partial class Info_User : Form
     {
         private String userName;
-        public Info_User(String userName)
+        public string role_id;
+        public string password;
+        public Info_User(String userName,string role_id)
         {
+            this.role_id = role_id;
             this.userName = userName;
             InitializeComponent();
             loadData();
+            if(this.role_id == "002")
+            {
+                btnAdd.Visible = false;
+                button3.Visible = false;
+                btnDelete.Visible = false;
+            }
         }
 
         private void loadData()
         {
+
+
             //1
             ArrayList result = new BUS.LoginBUS().get_Info_User(userName);
             label_name.Text = result[0].ToString();
@@ -42,6 +53,7 @@ namespace ToDoList.GUI
             txbChucVu.Text = result[5].ToString();
 
             //3
+            this.password = result[4].ToString();
             dataGridViewUserList.DataSource = null;
             dataGridViewUserList.Columns.Add("user_id", "Tài khoản");
             dataGridViewUserList.Columns.Add("fullname", "Tên");
@@ -98,31 +110,37 @@ namespace ToDoList.GUI
             {
                 result += "Email không được để trống! \n";
             }
+            else
+            {
+                bool flag_check_mail = false;
+                try
+                {
+                    MailAddress m = new MailAddress(txbEmail.Text);
+
+                    flag_check_mail = true;
+                }
+                catch (FormatException)
+                {
+                    flag_check_mail = false;
+                }
+
+                if (flag_check_mail == false)
+                {
+                    result += "Email không hợp lệ! \n";
+                }
+
+            }
 
             if (txbSdt.Text.ToString() == "")
             {
                 result += "Số điện thoại không được để trống! \n";
             }
-            if (txbSdt.Text.Length != 10)
+            else
             {
-                result += "Số điện thoại không hợp lệ! \n";
-            }
-
-            bool flag_check_mail = false;
-            try
-            {
-                MailAddress m = new MailAddress(txbEmail.Text);
-
-                flag_check_mail = true;
-            }
-            catch (FormatException)
-            {
-                flag_check_mail = false;
-            }
-
-            if(flag_check_mail == false)
-            {
-                result += "Email không hợp lệ! \n";
+                if (txbSdt.Text.Length != 10)
+                {
+                    result += "Số điện thoại không hợp lệ! \n";
+                }
             }
 
             if (result != "")
@@ -220,7 +238,38 @@ namespace ToDoList.GUI
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
+            Add_User add = new Add_User(this.userName);
+            add.ShowDialog();
+            loadData();
+            //this.Close();
+        }
 
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            string user_id = dataGridViewUserList.CurrentRow.Cells[0].Value.ToString();
+            if(new BUS.Role_Users_BUS().check_user_exit(user_id) == 1)
+            {
+                MessageBox.Show("Xóa thất bại. Dữ liệu người dùng có nằm trong bảng khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Xóa người dùng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new BUS.Role_Users_BUS().delete_user(this.userName,user_id);
+                loadData();
+            }
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            string userName = dataGridViewUserList.CurrentRow.Cells[0].Value.ToString();
+            string HoTen = dataGridViewUserList.CurrentRow.Cells[1].Value.ToString();
+            string sdt = dataGridViewUserList.CurrentRow.Cells[2].Value.ToString();
+            string email = dataGridViewUserList.CurrentRow.Cells[3].Value.ToString();
+            string chucVu = dataGridViewUserList.CurrentRow.Cells[4].Value.ToString();
+            Edit_User edit = new Edit_User(this.userName,userName, HoTen, sdt, email, chucVu, this.password);
+            edit.ShowDialog();
+            loadData();
+            //this.Close();
         }
     }
 }

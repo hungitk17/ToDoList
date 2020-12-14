@@ -78,10 +78,11 @@ namespace ToDoList.DAO
                                            on t.user_id equals u.user_id
                                            select new Role_Users_DTO
                                            {
+                                               user_id = u.user_id,
                                                task_id = t.task_id,
                                                tencongviec = t.title,
                                                nguoitao = u.user_id,
-                                               tennguoitao = u.fullname,
+                                               tennguoitao = u.user_id+"-"+u.fullname,
                                                ngaybatdau = t.fromdate,
                                                ngayketthuc = t.todate,
                                                nguoilamchung = "",
@@ -108,9 +109,21 @@ namespace ToDoList.DAO
                     {
                         if (item.nguoitao != item2.user_id)
                         {
-                            item.nguoilamchung += item2.ten + "\n";
+                            item.nguoilamchung += item2.ten + "-";
                         }
                     }
+                }
+            }
+
+            foreach (var item in result)
+            {
+                if(item.nguoilamchung != "")
+                {
+                    item.nguoilamchung = item.nguoilamchung.Substring(0, item.nguoilamchung.Length - 1);
+                }
+                if(item.nguoilamchung == "")
+                {
+                    item.nguoilamchung = "Trống!";
                 }
             }
 
@@ -131,6 +144,12 @@ namespace ToDoList.DAO
             ur.phone = sdt;
             ur.email = email;
             DB.SaveChanges();
+            history h = new history();
+            h.user_id = user_id;
+            h.action = "Thay đổi thông tin của nhân viên " + user_id + "-" + hoTen;
+            h.create_date = DateTime.Now;
+            DB.histories.Add(h);
+            DB.SaveChanges();
             return 1;
         }
 
@@ -138,6 +157,11 @@ namespace ToDoList.DAO
         {
             user ur = DB.users.Find(user_id);
             ur.pass = password;
+            history h = new history();
+            h.user_id = user_id;
+            h.action = "Thay đổi password của nhân viên " + user_id;
+            h.create_date = DateTime.Now;
+            DB.histories.Add(h);
             DB.SaveChanges();
             return 1;
         }
@@ -218,5 +242,87 @@ namespace ToDoList.DAO
             return 0;
         }
 
+        public int check_uesr_name(string userName)
+        {
+            var res = DB.users.Select(p => p).ToList();
+            foreach (var item in res)
+            {
+                if (userName == item.user_id)
+                {
+                    return 1; // UserName da ton tai
+                }
+            }
+            return 0;
+        }
+
+        public IEnumerable load_role()
+        {
+            var res = DB.roles.Select(r => r.role_id + "-" + r.name);
+            return res.ToList();
+        }
+
+        public int add_user(string user_id_exe, string fullname, string email, string role, string sdt, string userName, string password)
+        {
+            string[] arr_role_id = role.Split('-');
+            string role_id = arr_role_id[0];
+            user u = new user();
+            u.user_id = userName;
+            u.pass = password;
+            u.phone = sdt;
+            u.email = email;
+            u.role_id = role_id;
+            u.fullname = fullname;
+            DB.users.Add(u);
+            history h = new history();
+            h.user_id = user_id_exe;
+            h.action = "Thêm nhân viên " + userName + "-" + fullname;
+            h.create_date = DateTime.Now;
+            DB.histories.Add(h);
+            DB.SaveChanges();
+            return 1;
+        }
+
+        public int edit_user(string user_id_exe,string fullname, string sdt, string userName, string pass)
+        {
+            user u = DB.users.Find(userName);
+            u.pass = pass;
+            u.phone = sdt;
+            u.fullname = fullname;
+            history h = new history();
+            h.user_id = user_id_exe;
+            h.action = "Sửa nhân viên " + userName + "-" + fullname;
+            h.create_date = DateTime.Now;
+            DB.histories.Add(h);
+            DB.SaveChanges();
+            return 1;
+        }
+
+        public int check_user_exit(string user_id)
+        {
+            var history = DB.histories.FirstOrDefault(h => h.user_id == user_id);
+            var joining = DB.joinnings.FirstOrDefault(h => h.user_id == user_id);
+            var comment = DB.comments.FirstOrDefault(h => h.user_id == user_id);
+            if(history != null || joining != null || comment != null)
+            {
+                return 1; // ton tai trong ban khac
+            }
+            return 0;
+        }
+
+        public int delete_user(string user_id_exe,string user_id)
+        {
+            user res = DB.users.Find(user_id);
+            if(res != null)
+            {
+                DB.users.Remove(res);
+                history h = new history();
+                h.user_id = user_id_exe;
+                h.action = "Xóa nhân viên " + user_id;
+                h.create_date = DateTime.Now;
+                DB.histories.Add(h);
+                DB.SaveChanges();
+            }
+            return 0;
+        }
     }
 }
